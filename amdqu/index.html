@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AMD驱动下载中心 - 提供官方最新AMD显卡驱动、Radeon驱动及Adrenalin软件下载，支持Windows 10/11系统，包含驱动版本历史查询与安装指南。">
+    <meta name="keywords" content="AMD驱动下载,AMD显卡驱动,Radeon驱动,AMD驱动程序,显卡驱动更新">
+    <title>AMD驱动下载-官方最新显卡驱动与驱动程序下载中心</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --amd-red: #ED1C24;
+            --amd-dark-red: #c4121a;
+            --amd-gray: #f2f2f2;
+            --amd-text: #333333;
+            --amd-text-light: #666666;
+            --amd-border: #e0e0e0;
+            --amd-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--amd-text);
+            background-color: #fff;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--amd-red);
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--amd-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--amd-red);
+        }
+
+        .logo span {
+            margin-left: 8px;
+            color: var(--amd-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: var(--amd-red);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--amd-red);
+            color: var(--amd-red);
+        }
+
+        .btn-outline:hover {
+            background: rgba(237, 28, 36, 0.05);
+        }
+
+        .btn-primary {
+            background: var(--amd-red);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--amd-dark-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff0f1 0%, #fff 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: var(--amd-text);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--amd-text-light);
+            margin-bottom: 32px;
+        }
+
+        /* System Selector */
+        .system-selector {
+            background: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: var(--amd-shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .selector-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .selector-label {
+            font-weight: 600;
+            min-width: 80px;
+        }
+
+        select {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid var(--amd-border);
+            border-radius: 4px;
+            font-size: 15px;
+            min-width: 200px;
+            background-color: #fff;
+        }
+
+        /* Hardware Grid */
+        .section {
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--amd-text-light);
+        }
+
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            border: 1px solid var(--amd-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--amd-shadow);
+        }
+
+        .card-img {
+            height: 160px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            font-size: 40px;
+        }
+
+        .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--amd-text-light);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-footer {
+            margin-top: auto;
+        }
+
+        .card-footer .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Driver List Table */
+        .table-container {
+            overflow-x: auto;
+            border: 1px solid var(--amd-border);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--amd-border);
+        }
+
+        th {
+            background-color: #fafafa;
+            font-weight: 600;
+            color: var(--amd-text);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #fafafa;
+        }
+
+        .version-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: #ffebeb;
+            color: var(--amd-red);
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .date-tag {
+            color: var(--amd-text-light);
+            font-size: 13px;
+        }
+
+        /* Guide Section */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .guide-item {
+            background: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--amd-border);
+        }
+
+        .guide-item h3 {
+            margin-bottom: 12px;
+            color: var(--amd-red);
+        }
+
+        .guide-item p {
+            color: var(--amd-text-light);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .guide-steps {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .guide-steps li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--amd-text-light);
+        }
+
+        .guide-steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--amd-red);
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--amd-border);
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--amd-text-light);
+            font-size: 14px;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--amd-red);
+        }
+
+        /* Footer */
+        footer {
+            background: #f9f9f9;
+            padding: 60px 20px 20px;
+            border-top: 1px solid var(--amd-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--amd-text-light);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--amd-red);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--amd-text-light);
+            font-size: 13px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-inner {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 2L2 10V22L16 30L30 22V10L16 2Z" fill="#ED1C24"/>
+                    <path d="M16 6L6 12V20L16 26L26 20V12L16 6Z" fill="white"/>
+                    <path d="M16 10L11 13V19L16 22L21 19V13L16 10Z" fill="#ED1C24"/>
+                </svg>
+                <span>驱动下载中心</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#products">显卡系列</a>
+                <a href="#drivers">驱动下载</a>
+                <a href="#guide">安装指南</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录账户</a>
+                <a href="#" class="btn btn-primary">提交反馈</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>AMD驱动下载 - 官方最新显卡驱动与软件</h1>
+                <p>获取专为您的AMD Radeon显卡设计的最新驱动程序，提升游戏性能，优化系统稳定性，释放硬件潜能。</p>
+                
+                <div class="system-selector">
+                    <div class="selector-row">
+                        <label class="selector-label">操作系统：</label>
+                        <select id="osSelect">
+                            <option value="win11">Windows 11 (64位)</option>
+                            <option value="win10">Windows 10 (64位)</option>
+                            <option value="win10">Windows 10 (32位)</option>
+                        </select>
+                    </div>
+                    <div class="selector-row">
+                        <label class="selector-label">产品系列：</label>
+                        <select id="seriesSelect">
+                            <option value="rx6000">Radeon RX 6000 系列</option>
+                            <option value="rx5000">Radeon RX 5000 系列</option>
+                            <option value="r7">Radeon R7 / R8 / R9</option>
+                            <option value="vega">Radeon Vega 系列</option>
+                        </select>
+                    </div>
+                    <div class="selector-row" style="justify-content: center;">
+                        <button class="btn btn-primary" style="width: 200px; height: 44px; font-size: 16px;" onclick="alert('此处将跳转至AMD官网驱动下载页面')">立即检测并下载</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Series -->
+        <section id="products" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">热门显卡系列驱动</h2>
+                    <p class="section-subtitle">选择您的显卡型号以获取对应的专用驱动程序</p>
+                </div>
+                
+                <div class="hardware-grid">
+                    <article class="card">
+                        <div class="card-img">RX 7900 XTX</div>
+                        <div class="card-body">
+                            <h3 class="card-title">Radeon RX 7900 XTX</h3>
+                            <p class="card-desc">旗舰级光栅与光追性能，支持最新的FSR 3.0技术。</p>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-img">RX 7800 XT</div>
+                        <div class="card-body">
+                            <h3 class="card-title">Radeon RX 7800 XT</h3>
+                            <p class="card-desc">高性价比游戏显卡，16GB大显存，流畅运行3A大作。</p>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-img">RX 6750 GRE</div>
+                        <div class="card-body">
+                            <h3 class="card-title">Radeon RX 6750 GRE</h3>
+                            <p class="card-desc">当前主流市场热销型号，性能接近RTX 4060 Ti。</p>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-img">Radeon Pro</div>
+                        <div class="card-body">
+                            <h3 class="card-title">Radeon Pro 系列</h3>
+                            <p class="card-desc">专为专业工作站设计，支持4K/8K多屏显示与视频编辑。</p>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Drivers Table -->
+        <section id="drivers" class="section" style="background-color: #f9f9f9;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">最新驱动版本</h2>
+                    <p class="section-subtitle">定期更新的驱动程序包含性能优化与安全补丁</p>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>驱动程序名称</th>
+                                <th>版本</th>
+                                <th>发布日期</th>
+                                <th>适用系统</th>
+                                <th>文件大小</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="version-tag">最新</span>AMD Radeon Software Adrenalin 24.1.1</td>
+                                <td>24.1.1</td>
+                                <td class="date-tag">2024年1月</td>
+                                <td>Windows 11 64-bit</td>
+                                <td>~750 MB</td>
+                                <td><a href="#" class="btn btn-outline" style="padding: 4px 12px; font-size: 13px;">下载</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="version-tag">推荐</span>AMD Radeon Software Adrenalin 23.12.1</td>
+                                <td>23.12.1</td>
+                                <td class="date-tag">2023年12月</td>
+                                <td>Windows 10 64-bit</td>
+                                <td>~740 MB</td>
+                                <td><a href="#" class="btn btn-outline" style="padding: 4px 12px; font-size: 13px;">下载</a></td>
+                            </tr>
+                            <tr>
+                                <td>AMD Radeon Software Adrenalin 23.9.1</td>
+                                <td>23.9.1</td>
+                                <td class="date-tag">2023年9月</td>
+                                <td>Windows 11 64-bit</td>
+                                <td>~730 MB</td>
+                                <td><a href="#" class="btn btn-outline" style="padding: 4px 12px; font-size: 13px;">下载</a></td>
+                            </tr>
+                            <tr>
+                                <td>AMD Radeon Software Adrenalin 23.7.1</td>
+                                <td>23.7.1</td>
+                                <td class="date-tag">2023年7月</td>
+                                <td>Windows 10 64-bit</td>
+                                <td>~725 MB</td>
+                                <td><a href="#" class="btn btn-outline" style="padding: 4px 12px; font-size: 13px;">下载</a></td>
+                            </tr>
+                            <tr>
+                                <td>AMD Radeon Software Adrenalin 23.5.1</td>
+                                <td>23.5.1</td>
+                                <td class="date-tag">2023年5月</td>
+                                <td>Windows 11 64-bit</td>
+                                <td>~720 MB</td>
+                                <td><a href="#" class="btn btn-outline" style="padding: 4px 12px; font-size: 13px;">下载</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Guide -->
+        <section id="guide" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">驱动安装指南</h2>
+                    <p class="section-subtitle">简单的三步操作，快速完成驱动更新</p>
+                </div>
+
+                <div class="guide-grid">
+                    <div class="guide-item">
+                        <h3>1. 准备工作</h3>
+                        <p>确保您的电脑已连接稳定的电源，并关闭所有不必要的后台程序（如杀毒软件、浏览器、游戏等），以免安装过程中发生冲突。</p>
+                        <ul class="guide-steps">
+                            <li>建议使用管理员权限运行安装程序。</li>
+                            <li>Windows系统建议先卸载旧的显卡驱动。</li>
+                        </ul>
+                    </div>
+                    <div class="guide-item">
+                        <h3>2. 运行安装程序</h3>
+                        <p>下载完成后，双击运行安装包。如果是首次安装，请按照向导提示选择“自定义安装”以获取更多选项。</p>
+                        <ul class="guide-steps">
+                            <li>选择“完全安装”以包含最新功能。</li>
+                            <li>注意勾选“创建系统还原点”以防万一。</li>
+                        </ul>
+                    </div>
+                    <div class="guide-item">
+                        <h3>3. 重启电脑</h3>
+                        <p>安装进度条完成后，系统会提示您重启计算机。重启后，您的AMD显卡将自动加载新驱动并应用所有性能优化设置。</p>
+                        <ul class="guide-steps">
+                            <li>重启后进入设备管理器检查显卡状态。</li>
+                            <li>运行Radeon软件验证驱动版本。</li>
+                        </ul>
+                    </div>
+                    <div class="guide-item">
+                        <h3>4. 常见问题处理</h3>
+                        <p>如果在安装过程中遇到黑屏或蓝屏，请长按电源键强制关机，然后重新开机进入安全模式卸载驱动，再重新安装。</p>
+                        <ul class="guide-steps">
+                            <li>检查显卡是否支持当前系统版本。</li>
+                            <li>确保BIOS开启兼容性模式。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" style="background-color: #f9f9f9;">
+            <div class="container" style="max-width: 800px;">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题 (FAQ)</h2>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">如何确认我需要更新驱动？ <span>+</span></div>
+                    <div class="faq-answer">如果您在玩最新游戏时出现掉帧、卡顿，或者显卡温度异常升高，通常建议更新驱动。AMD会定期发布驱动来优化特定游戏的性能。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">官方驱动和第三方驱动哪个更好？ <span>+</span></div>
+                    <div class="faq-answer">AMD官方驱动经过了严格的兼容性测试，最稳定且安全。第三方驱动（如魔改版）虽然可能提供更高的超频潜力，但存在兼容性风险，建议普通用户使用官方驱动。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">安装驱动后画面变暗怎么办？ <span>+</span></div>
+                    <div class="faq-answer">这通常是因为驱动版本不匹配或安装不完整。请尝试卸载驱动并重启，然后重新下载最新版本进行安装。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于驱动下载</h4>
+                <ul>
+                    <li><a href="#">驱动下载中心介绍</a></li>
+                    <li><a href="#">驱动版本说明</a></li>
+                    <li><a href="#">提交反馈</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>支持服务</h4>
+                <ul>
+                    <li><a href="#">AMD官方支持</a></li>
+                    <li><a href="#">显卡驱动查询</a></li>
+                    <li><a href="#">驱动技术支持</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>相关链接</h4>
+                <ul>
+                    <li><a href="#">AMD官网</a></li>
+                    <li><a href="#">Radeon Gaming</a></li>
+                    <li><a href="#">ESR安全更新</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">版权声明</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 AMD驱动下载中心. All rights reserved. 本站仅为资源索引与导航，非AMD官方站点。</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+                
+                const icon = item.querySelector('span');
+                if (parent.classList.contains('active')) {
+                    icon.textContent = '-';
+                } else {
+                    icon.textContent = '+';
+                }
+            });
+        });
+
+        // Simple System Selector Mockup
+        const osSelect = document.getElementById('osSelect');
+        const seriesSelect = document.getElementById('seriesSelect');
+        
+        osSelect.addEventListener('change', () => {
+            console.log('System changed to:', osSelect.value);
+            // In a real scenario, this would fetch specific drivers
+        });
+
+        seriesSelect.addEventListener('change', () => {
+            console.log('Series changed to:', seriesSelect.value);
+            // In a real scenario, this would filter the driver list
+        });
+    </script>
+</body>
+  </html>
