@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="保健品批文查询平台，提供国产保健食品注册备案查询、蓝帽子批文查询、保健食品原料目录及最新政策法规解读，帮助消费者识别正规保健品。">
+    <meta name="keywords" content="保健品批文,蓝帽子,保健食品批文查询,国产保健食品,保健食品注册备案">
+    <title>保健品批文查询平台-正规保健食品注册备案与资质认证指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #008cba;
+            --primary-dark: #005f7f;
+            --secondary-color: #f0f8ff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #ffffff;
+            --bg-section: #f9fbfd;
+            --border-color: #e1e4e8;
+            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #e6f7ff 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            background: #fff;
+            padding: 0.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 50px 0 0 50px;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+        }
+
+        /* Table Section */
+        .table-container {
+            overflow-x: auto;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--secondary-color);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #fafafa;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-valid {
+            background: #e6f7ed;
+            color: #00a854;
+        }
+
+        .status-pending {
+            background: #fff7e6;
+            color: #fa8c16;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            background: var(--bg-section);
+            padding: 3rem 0;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+        }
+
+        .guide-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: var(--primary-color);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <div class="logo-icon">B</div>
+                <span>批文通</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">批文查询</a></li>
+                    <li><a href="#">政策法规</a></li>
+                    <li><a href="#">原料目录</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>保健品批文查询</h1>
+            <p>权威、便捷的国产保健食品注册备案信息查询平台，帮助您识别正规“蓝帽子”产品，保障健康权益。</p>
+            <div class="search-box">
+                <input type="text" placeholder="请输入产品名称、批准文号或生产企业..." id="searchInput">
+                <button onclick="performSearch()">查询</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- 核心信息区 -->
+        <section class="section-title">
+            <h2>什么是保健品批文？</h2>
+            <p>了解“蓝帽子”标志与保健食品注册备案制度</p>
+        </section>
+
+        <div class="info-grid">
+            <article class="info-card">
+                <div class="card-icon">📋</div>
+                <h3>什么是“蓝帽子”？</h3>
+                <p>“蓝帽子”是我国保健食品的专用标志，由国务院食品安全监督管理部门审查批准。获得“蓝帽子”标志的产品，意味着该产品经过了严格的功效学评价、安全性和质量标准审查，是经过国家批准上市的保健食品。</p>
+                <a href="#" class="btn-link">了解标志含义 &rarr;</a>
+            </article>
+
+            <article class="info-card">
+                <div class="card-icon">🔍</div>
+                <h3>注册与备案的区别</h3>
+                <p>目前保健食品管理分为“注册”和“备案”两种模式。注册制侧重于安全性评价和功能验证，备案制侧重于产品配方和标签的规范，两者均需经过国家市场监督管理总局批准。</p>
+                <a href="#" class="btn-link">查看管理制度 &rarr;</a>
+            </article>
+
+            <article class="info-card">
+                <div class="card-icon">⚠️</div>
+                <h3>如何辨别真伪？</h3>
+                <p>消费者购买保健食品时，应查看包装上是否有“蓝帽子”标志、批准文号（如“国食健注G...”或“国食健备J...”）。通过本平台输入批文号，可快速验证产品信息的真实性与有效性。</p>
+                <a href="#" class="btn-link">查询指南 &rarr;</a>
+            </article>
+        </div>
+
+        <!-- 实时数据展示区 -->
+        <section class="section-title">
+            <h2>最新批文公示</h2>
+            <p>国家市场监督管理总局最新批准的保健食品注册备案信息</p>
+        </section>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>批准文号</th>
+                        <th>产品名称</th>
+                        <th>类别</th>
+                        <th>功效/成分</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>国食健注G2023XXXX</td>
+                        <td>深海鱼油软胶囊</td>
+                        <td>补充Omega-3脂肪酸</td>
+                        <td>鱼油、维生素E</td>
+                        <td><span class="status-badge status-valid">已注册</span></td>
+                    </tr>
+                    <tr>
+                        <td>国食健备J202310012</td>
+                        <td>复合维生素B族片</td>
+                        <td>补充维生素B族</td>
+                        <td>维生素B1、B2、B6等</td>
+                        <td><span class="status-badge status-valid">已备案</span></td>
+                    </tr>
+                    <tr>
+                        <td>国食健注G20230088</td>
+                        <td>褪黑素软胶囊</td>
+                        <td>改善睡眠</td>
+                        <td>褪黑素</td>
+                        <td><span class="status-badge status-valid">已注册</span></td>
+                    </tr>
+                    <tr>
+                        <td>国食健备J202310015</td>
+                        <td>益生菌粉剂</td>
+                        <td>调节肠道菌群</td>
+                        <td>植物乳杆菌等</td>
+                        <td><span class="status-badge status-valid">已备案</span></td>
+                    </tr>
+                    <tr>
+                        <td>国食健注G20230105</td>
+                        <td>钙加D咀嚼片</td>
+                        <td>补充钙、维生素D</td>
+                        <td>碳酸钙、维生素D3</td>
+                        <td><span class="status-badge status-pending">审核中</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 使用指南 -->
+        <section class="guide-section">
+            <div class="section-title">
+                <h2>查询与使用指南</h2>
+                <p>遵循以下步骤，正确使用保健品批文信息</p>
+            </div>
+            <div class="guide-steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>查看包装标识</h4>
+                        <p>在购买保健食品时，请务必检查产品外包装正面的显著位置，寻找“蓝帽子”标志以及“国食健字”或“国食健注/备”字样的批准文号。</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>输入关键信息查询</h4>
+                        <p>如果您手头有产品包装，可以复制批准文号（如“国食健注G20231234”）到本站的搜索框中，系统将自动检索对应的产品详情。</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>核对产品信息</h4>
+                        <p>查询结果应包含产品的正式名称、生产企业、保质期及主要功效成分。若信息不符或无记录，请谨慎购买。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于批文通</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">
+                        批文通致力于提供最准确的保健食品注册备案信息查询服务，为消费者提供透明的健康产品信息，促进保健食品行业的规范化发展。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">国家药监局官网</a></li>
+                        <li><a href="#">国产保健食品注册系统</a></li>
+                        <li><a href="#">保健食品备案信息查询</a></li>
+                        <li><a href="#">常见问题解答</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务条款</h4>
+                    <ul>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用协议</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 保健品批文查询平台 版权所有 | 本站信息仅供参考，具体请以国家官方数据为准</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function performSearch() {
+            const input = document.getElementById('searchInput');
+            const value = input.value.trim();
+            
+            if (value) {
+                // 模拟搜索反馈
+                alert('正在查询：' + value + '\n\n（注：本页面为演示版，实际数据请访问国家药监局官方网站）');
+            } else {
+                input.focus();
+            }
+        }
+
+        // 绑定回车键搜索
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>
