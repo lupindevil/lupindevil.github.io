@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="造物工坊 - 探索创意设计与手工制作的灵感平台，提供DIY教程、材料包推荐、工具评测及创意社群交流，激发你的无限创造力。">
+    <meta name="keywords" content="造物,手工制作,DIY教程,创意设计,手工材料包,木工,布艺,创意工坊">
+    <title>造物工坊-创意设计与手工制作灵感平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #fdfbf7;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-bar input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .search-bar button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            background-color: #d35400;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s, transform 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-color);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .category-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Featured Projects */
+        .featured {
+            padding: 3rem 0;
+            background-color: #f4f4f4;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-image {
+            height: 200px;
+            width: 100%;
+            position: relative;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags span {
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        /* Tools & Materials */
+        .tools-section {
+            padding: 3rem 0;
+        }
+
+        .tools-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .tool-list {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tool-item:last-child {
+            border-bottom: none;
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .tool-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .tool-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .tool-buy {
+            margin-left: auto;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .guide-sidebar {
+            background: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+        }
+
+        .guide-sidebar h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .guide-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .guide-list a {
+            color: #ddd;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .guide-list a:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 0;
+            background: var(--bg-color);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            padding: 0 1.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.2rem 1.2rem;
+            max-height: 200px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: #ccc;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tools-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .search-bar {
+                width: 100%;
+            }
+
+            .search-bar input {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <span>◆</span> 造物工坊
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#projects">精选项目</a></li>
+                <li><a href="#categories">分类</a></li>
+                <li><a href="#tools">工具指南</a></li>
+                <li><a href="#community">社区</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="搜索创意教程、材料包...">
+            <button type="button">搜索</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>释放你的创造潜能</h1>
+            <p>无论你是手工爱好者、设计师还是DIY新手，这里都有适合你的灵感、教程和工具。让我们一起将想法变为现实。</p>
+            <a href="#projects" class="hero-btn">开始探索</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">热门造物领域</h2>
+            <div class="category-grid">
+                <article class="category-card">
+                    <span class="category-icon">🎨</span>
+                    <h3>手工木作</h3>
+                    <p>原木家具、雕刻与修复</p>
+                </article>
+                <article class="category-card">
+                    <span class="category-icon">🧵</span>
+                    <h3>布艺缝纫</h3>
+                    <p>服饰制作、布包与家居装饰</p>
+                </article>
+                <article class="category-card">
+                    <span class="category-icon">🧱</span>
+                    <h3>陶艺与粘土</h3>
+                    <p>拉坯成型、手捏塑形与彩绘</p>
+                </article>
+                <article class="category-card">
+                    <span class="category-icon">🪀</span>
+                    <h3>电子电路</h3>
+                    <p>Arduino、创客工具与原型设计</p>
+                </article>
+                <article class="category-card">
+                    <span class="category-icon">✂️</span>
+                    <h3>纸艺与折纸</h3>
+                    <p>立体折纸、剪纸与模型制作</p>
+                </article>
+                <article class="category-card">
+                    <span class="category-icon">💄</span>
+                    <h3>手工香氛</h3>
+                    <p>蜡烛、精油与护肤DIY</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="featured">
+        <div class="container">
+            <h2 class="section-title">本周精选项目</h2>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-image">
+                        <span class="project-badge">热门</span>
+                        <img src="https://picsum.photos/seed/woodwork/400/300" alt="简约实木书架">
+                    </div>
+                    <div class="project-content">
+                        <h3>周末制作：简约实木书架</h3>
+                        <div class="project-meta">
+                            <span>难度：中等</span>
+                            <span>耗时：4小时</span>
+                        </div>
+                        <p class="project-desc">利用简单的榫卯结构，打造一个稳固且美观的实木书架。适合初学者入门。</p>
+                        <div class="project-tags">
+                            <span>木工</span>
+                            <span>家居</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="https://picsum.photos/seed/candle/400/300" alt="手工香薰蜡烛">
+                    </div>
+                    <div class="project-content">
+                        <h3>治愈系：手工香薰蜡烛制作</h3>
+                        <div class="project-meta">
+                            <span>难度：简单</span>
+                            <span>耗时：2小时</span>
+                        </div>
+                        <p class="project-desc">学习如何融化蜡液、调香以及制作烛芯。制作过程解压，成品适合自用或送礼。</p>
+                        <div class="project-tags">
+                            <span>香氛</span>
+                            <span>手工</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image">
+                        <span class="project-badge">进阶</span>
+                        <img src="https://picsum.photos/seed/circuit/400/300" alt="Arduino夜灯">
+                    </div>
+                    <div class="project-content">
+                        <h3>创客进阶：Arduino智能夜灯</h3>
+                        <div class="project-meta">
+                            <span>难度：进阶</span>
+                            <span>耗时：6小时</span>
+                        </div>
+                        <p class="project-desc">结合硬件编程，制作一个能根据环境光线自动调节亮度的智能夜灯，点亮你的创意。</p>
+                        <div class="project-tags">
+                            <span>电子</span>
+                            <span>编程</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Materials Section -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <h2 class="section-title">必备工具与材料</h2>
+            <div class="tools-layout">
+                <div class="tool-list">
+                    <h3>新手入门工具包推荐</h3>
+                    <div class="tool-item">
+                        <div class="tool-icon">🪚</div>
+                        <div class="tool-info">
+                            <h4>多功能手锯</h4>
+                            <p>切割木料、塑料等材料，手柄舒适，适合长时间使用。</p>
+                        </div>
+                        <a href="#" class="tool-buy">查看详情 &rarr;</a>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">🧰</div>
+                        <div class="tool-info">
+                            <h4>基础木工套装</h4>
+                            <p>包含螺丝刀、锤子、卷尺等基础工具，一应俱全。</p>
+                        </div>
+                        <a href="#" class="tool-buy">查看详情 &rarr;</a>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">🧵</div>
+                        <div class="tool-info">
+                            <h4>刺绣套装</h4>
+                            <p>绣绷、各种针号、绣线及基础针法图解手册。</p>
+                        </div>
+                        <a href="#" class="tool-buy">查看详情 &rarr;</a>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">🧼</div>
+                        <div class="tool-info">
+                            <h4>手工皂模具</h4>
+                            <p>硅胶材质，无毒耐高温，可制作各种造型的手工皂。</p>
+                        </div>
+                        <a href="#" class="tool-buy">查看详情 &rarr;</a>
+                    </div>
+                </div>
+
+                <aside class="guide-sidebar">
+                    <h3>新手避坑指南</h3>
+                    <ul class="guide-list">
+                        <li><a href="#">安全第一：如何正确佩戴护目镜和手套</a></li>
+                        <li><a href="#">材料选购：新手如何分辨木材优劣</a></li>
+                        <li><a href="#">工具保养：延长工具寿命的技巧</a></li>
+                        <li><a href="#">空间规划：如何在家中开辟DIY工作区</a></li>
+                        <li><a href="#">心态调整：不要害怕犯错，那是成长的机会</a></li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">常见问题解答</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">我是零基础，适合做什么类型的项目？</div>
+                    <div class="faq-answer">
+                        <p>完全没问题！建议从“简单易上手”的项目开始，例如手工香薰蜡烛、纸艺折纸或简单的布艺挂饰。这些项目对工具要求低，且能迅速获得成就感。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">造物需要准备哪些基础工具？</div>
+                    <div class="faq-answer">
+                        <p>基础工具因领域而异。如果是木工，需要锯子、锤子、尺子；如果是缝纫，需要针线、剪刀和绣绷。我们在“工具指南”板块为您整理了详细的清单。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">在哪里可以购买造物所需的材料？</div>
+                    <div class="faq-answer">
+                        <p>我们推荐前往专业的手作材料店或信誉良好的线上电商平台，选择标注“手工DIY专用”的材料包，以确保品质和安全性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于造物工坊</h4>
+                <p>造物工坊致力于为创意爱好者提供最全的DIY教程、工具评测和社区交流平台。让每个人都能享受动手创造的乐趣。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#">所有教程</a></li>
+                    <li><a href="#">材料包商城</a></li>
+                    <li><a href="#">社区论坛</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系与合作</h4>
+                <ul>
+                    <li><a href="#">投稿指南</a></li>
+                    <li><a href="#">商务合作</a></li>
+                    <li><a href="#">加入社区</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 造物工坊 版权所有. 保留所有权利.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Simple FAQ Accordion Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    });
+</script>
+
+</body>
+  </html>
