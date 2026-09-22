@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鲍鱼网 - 专业海鲜养殖与贸易资讯平台</title>
+    <meta name="description" content="鲍鱼网为您提供最新的鲍鱼养殖技术、市场价格行情、行业动态及贸易资讯。致力于打造最专业的海洋水产信息交流平台，助力鲍鱼产业健康发展。">
+    <meta name="keywords" content="鲍鱼网,鲍鱼养殖,鲍鱼价格,海鲜贸易,水产资讯,鲍鱼批发">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #006d77;
+            --secondary-color: #83c5be;
+            --accent-color: #e29578;
+            --bg-color: #edf6f9;
+            --text-color: #2d3436;
+            --card-bg: #ffffff;
+            --spacing-unit: 1rem;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.85rem;
+            padding: 0.5rem 0;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-box input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            width: 200px;
+        }
+
+        .search-box button {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* 价格行情板块 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .market-section {
+            margin-bottom: 3rem;
+        }
+
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .market-table th, .market-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .market-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        .market-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .price-up { color: #e74c3c; }
+        .price-down { color: #27ae60; }
+        .price-flat { color: #7f8c8d; }
+
+        /* 养殖技术板块 */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            width: fit-content;
+        }
+
+        .card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .card-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* 贸易与资讯 */
+        .info-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .news-list li {
+            background-color: var(--card-bg);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: #888;
+            min-width: 80px;
+        }
+
+        .news-title {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        .news-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .news-tag {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            background-color: #eee;
+        }
+
+        .sidebar-widget {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 0.5rem;
+        }
+
+        .contact-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #2d3436;
+            color: #dfe6e9;
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .info-layout {
+                grid-template-columns: 1fr;
+            }
+            .market-table th, .market-table td {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+            .market-table th:nth-child(2), 
+            .market-table td:nth-child(2) {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .search-box input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部信息条 -->
+    <div class="header-top">
+        <div class="container">
+            <span>欢迎访问鲍鱼网：专注鲍鱼产业，提供全方位资讯服务</span>
+            <span>24小时服务热线：400-888-XXXX</span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="container nav-bar">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                鲍鱼网<span>资讯</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">价格行情</a></li>
+                    <li><a href="#">养殖技术</a></li>
+                    <li><a href="#">行业资讯</a></li>
+                    <li><a href="#">人才招聘</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索关键词...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>连接鲍鱼产业上下游</h1>
+            <p>汇聚全球鲍鱼价格数据、前沿养殖技术与最新市场动态，为您的养殖决策与贸易合作提供精准数据支持。</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>10年+</h3>
+                    <p>行业深耕</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>合作基地</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100W+</h3>
+                    <p>会员数据</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容区 -->
+    <main class="container">
+
+        <!-- 价格行情 -->
+        <section class="market-section">
+            <div class="section-title">
+                <h2>今日鲍鱼价格行情</h2>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="market-table">
+                    <thead>
+                        <tr>
+                            <th>地区</th>
+                            <th>品种</th>
+                            <th>规格 (斤/只)</th>
+                            <th>价格 (元/斤)</th>
+                            <th>涨跌</th>
+                            <th>更新时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>山东青岛</td>
+                            <td>皱纹盘鲍</td>
+                            <td>0.5-1</td>
+                            <td>380</td>
+                            <td class="price-up">▲ 2.5%</td>
+                            <td>10-24 14:30</td>
+                        </tr>
+                        <tr>
+                            <td>辽宁大连</td>
+                            <td>皱纹盘鲍</td>
+                            <td>0.5-1</td>
+                            <td>365</td>
+                            <td class="price-down">▼ 1.2%</td>
+                            <td>10-24 14:30</td>
+                        </tr>
+                        <tr>
+                            <td>福建宁德</td>
+                            <td>杂色鲍</td>
+                            <td>0.3-0.5</td>
+                            <td>420</td>
+                            <td class="price-flat">-</td>
+                            <td>10-24 14:30</td>
+                        </tr>
+                        <tr>
+                            <td>广东湛江</td>
+                            <td>九孔鲍</td>
+                            <td>0.5-1</td>
+                            <td>450</td>
+                            <td class="price-up">▲ 0.8%</td>
+                            <td>10-24 14:30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="#" style="color: var(--primary-color); font-weight: bold;">查看完整价格报告 &rarr;</a>
+            </div>
+        </section>
+
+        <!-- 养殖技术 -->
+        <section class="market-section">
+            <div class="section-title">
+                <h2>精选养殖技术指南</h2>
+            </div>
+            <div class="tech-grid">
+                <article class="card">
+                    <img src="https://picsum.photos/seed/abalone1/400/250" alt="鲍鱼饲料投喂" class="card-image">
+                    <div class="card-content">
+                        <span class="card-tag">饲料管理</span>
+                        <h3>夏季高温期鲍鱼饲料投喂技巧</h3>
+                        <p>高温天气下，鲍鱼食欲减退，如何科学调整饲料配方与投喂量，减少残饵污染，是提高养殖成活率的关键。</p>
+                        <a href="#" class="card-link">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://picsum.photos/seed/abalone2/400/250" alt="病害防治" class="card-image">
+                    <div class="card-content">
+                        <span class="card-tag">病害防治</span>
+                        <h3>鲍鱼常见脱板病的预防措施</h3>
+                        <p>脱板病是影响鲍鱼生长的顽疾，本文详细分析致病原因，并提供从水质调控到免疫增强的全方位防治方案。</p>
+                        <a href="#" class="card-link">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://picsum.photos/seed/abalone3/400/250" alt="工厂化养殖" class="card-image">
+                    <div class="card-content">
+                        <span class="card-tag">工厂化养殖</span>
+                        <h3>深水网箱养殖鲍鱼的优势分析</h3>
+                        <p>对比传统底播与筏式养殖，深水网箱养殖如何利用自然环境优势，提升鲍鱼品质与抗病能力。</p>
+                        <a href="#" class="card-link">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 行业资讯与侧边栏 -->
+        <div class="info-layout">
+            <section>
+                <div class="section-title">
+                    <h2>最新行业资讯</h2>
+                </div>
+                <ul class="news-list">
+                    <li>
+                        <span class="news-date">10-24</span>
+                        <div class="news-title"><a href="#">农业农村部发布2023年鲍鱼养殖产业发展白皮书</a></div>
+                        <span class="news-tag">政策</span>
+                    </li>
+                    <li>
+                        <span class="news-date">10-23</span>
+                        <div class="news-title"><a href="#">福建宁德鲍鱼出口量创历史新高，主要销往东南亚</a></div>
+                        <span class="news-tag">贸易</span>
+                    </li>
+                    <li>
+                        <span class="news-date">10-22</span>
+                        <div class="news-title"><a href="#">国内首家鲍鱼全产业链大数据平台正式上线</a></div>
+                        <span class="news-tag">科技</span>
+                    </li>
+                    <li>
+                        <span class="news-date">10-21</span>
+                        <div class="news-title"><a href="#">秋季鲍鱼肥满度提升指南：如何把握上市时机</a></div>
+                        <span class="news-tag">养殖</span>
+                    </li>
+                    <li>
+                        <span class="news-date">10-20</span>
+                        <div class="news-title"><a href="#">鲍鱼深加工产品市场潜力巨大，预制菜成新风口</a></div>
+                        <span class="news-tag">市场</span>
+                    </li>
+                </ul>
+            </section>
+
+            <aside>
+                <div class="sidebar-widget">
+                    <h3>联系我们</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            地址：山东省青岛市黄岛区渔业产业园A座
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            电话：0532-8888XXXX
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            邮箱：service@baoyuwang.com
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>热门分类</h3>
+                    <ul style="line-height: 2;">
+                        <li><a href="#">皱纹盘鲍</a></li>
+                        <li><a href="#">杂色鲍</a></li>
+                        <li><a href="#">九孔鲍</a></li>
+                        <li><a href="#">虾夷扇贝</a></li>
+                        <li><a href="#">海螺类</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于鲍鱼网</h4>
+                    <p style="font-size: 0.9rem; color: #aaa; line-height: 1.8;">
+                        鲍鱼网是国内领先的海水养殖行业门户网站，致力于为鲍鱼养殖户、贸易商及科研机构提供及时、准确的信息服务。我们连接市场与产地，推动水产养殖行业的数字化升级。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">网站地图</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">广告合作</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务支持</h4>
+                    <ul>
+                        <li><a href="#">会员注册</a></li>
+                        <li><a href="#">发布供求</a></li>
+                        <li><a href="#">价格订阅</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 鲍鱼网 版权所有 | 仅供演示使用</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                          </html>
