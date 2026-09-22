@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="花都高百丈风景区官方门户，提供景区地理位置、自然风光介绍、游览路线规划、门票价格及交通指南。探索高百丈的奇峰异石与生态美景。">
+    <meta name="keywords" content="花都高百丈风景区, 高百丈, 广州花都旅游, 花都风景区, 高百丈登山">
+    <title>花都高百丈风景区-生态观光与登山探险指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --secondary-color: #f1f8e9;
+            --text-main: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --accent-color: #ff9800;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-cta {
+            background: var(--primary-color);
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .header-cta:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://picsum.photos/seed/mountain/1920/1080.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-dark);
+        }
+
+        /* Info Cards */
+        .info-bar {
+            background: var(--white);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-item h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Main Content */
+        main {
+            padding: 60px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Left Column */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .card-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Sidebar */
+        aside {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-widget {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        .route-list li {
+            border-bottom: 1px solid #eee;
+            padding: 12px 0;
+        }
+
+        .route-list li:last-child {
+            border-bottom: none;
+        }
+
+        .route-list h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .route-list p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Map Section */
+        .map-section {
+            background: var(--secondary-color);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: #e0e0e0;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        /* Tips */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tip-item h4 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: #263238;
+            color: #cfd8dc;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-bar {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>⛰️</span> 花都高百丈风景区
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#scenery">景区风光</a></li>
+                    <li><a href="#guide">游览攻略</a></li>
+                    <li><a href="#tips">出行贴士</a></li>
+                </ul>
+            </nav>
+            <a href="#guide" class="header-cta">预约购票</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>探秘花都高百丈</h1>
+            <p>体验广州北部的自然秘境，感受奇峰怪石与清幽山谷的完美融合。这里是登山爱好者的天堂，也是都市人放松身心的理想之地。</p>
+            <div class="hero-btns">
+                <a href="#scenery" class="btn btn-primary">开始探索</a>
+                <a href="#guide" class="btn btn-outline">查看路线</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="info-bar">
+            <div class="info-item">
+                <h3>📍 地理位置</h3>
+                <p>广州市花都区炭步镇</p>
+            </div>
+            <div class="info-item">
+                <h3>⏰ 开放时间</h3>
+                <p>08:00 - 17:30</p>
+            </div>
+            <div class="info-item">
+                <h3>🎫 门票参考</h3>
+                <p>免费开放 / 景区交通另计</p>
+            </div>
+            <div class="info-item">
+                <h3>📞 联系电话</h3>
+                <p>020-12345678</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section id="scenery" class="section">
+            <div class="section-title">
+                <h2>景区风光</h2>
+                <p>领略高百丈独特的自然地貌与生态景观</p>
+            </div>
+            <div class="card-grid">
+                <article class="card">
+                    <img src="https://picsum.photos/seed/mountain1/400/300.jpg" alt="高百丈奇峰" class="card-img">
+                    <div class="card-body">
+                        <span class="card-tag">自然奇观</span>
+                        <h3 class="card-title">高百丈主峰</h3>
+                        <p class="card-text">高百丈主峰海拔约XXX米，山势陡峭，怪石嶙峋。登顶远眺，可俯瞰花都全景及周边连绵的群山。</p>
+                        <a href="#" class="card-link">了解更多 &rarr;</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://picsum.photos/seed/forest/400/300.jpg" alt="高百丈森林" class="card-img">
+                    <div class="card-body">
+                        <span class="card-tag">生态森林</span>
+                        <h3 class="card-title">原始次生林</h3>
+                        <p class="card-text">景区内植被覆盖率极高，拥有丰富的亚热带植物群落。空气清新，负氧离子含量充沛，是天然氧吧。</p>
+                        <a href="#" class="card-link">了解更多 &rarr;</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://picsum.photos/seed/river/400/300.jpg" alt="高百丈溪流" class="card-img">
+                    <div class="card-body">
+                        <span class="card-tag">山水相依</span>
+                        <h3 class="card-title">幽谷溪流</h3>
+                        <p class="card-text">蜿蜒的溪流穿行于峡谷之间，清澈见底。溪边设有亲水栈道，适合夏季游玩与避暑。</p>
+                        <a href="#" class="card-link">了解更多 &rarr;</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://picsum.photos/seed/sunset/400/300.jpg" alt="高百丈日落" class="card-img">
+                    <div class="card-body">
+                        <span class="card-tag">摄影圣地</span>
+                        <h3 class="card-title">云海日出</h3>
+                        <p class="card-text">每逢雨后初晴，山顶常现云海奇观。清晨时分，在观景台等待第一缕阳光洒向大地，景色壮丽。</p>
+                        <a href="#" class="card-link">了解更多 &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <section id="guide" class="section">
+                <div class="section-title">
+                    <h2>游览攻略</h2>
+                    <p>为您规划最舒适的游览路线</p>
+                </div>
+                
+                <div class="card-grid">
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/hike1/400/250.jpg" alt="徒步路线" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">经典环线徒步</h3>
+                            <p class="card-text">全长约8公里，适合体力较好的游客。途经高百丈主峰、原始森林和溪谷，全程约需4-5小时。</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/hike2/400/250.jpg" alt="休闲路线" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">轻松观光路线</h3>
+                            <p class="card-text">全长约3公里，路况较好，设有休息亭和观景台。适合家庭出游、老人及儿童。</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/camping/400/250.jpg" alt="露营推荐" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">指定露营区域</h3>
+                            <p class="card-text">景区内设有规范的露营基地，提供水电设施。夜晚可观赏星空，体验山野露营乐趣。</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <aside>
+                <div class="sidebar-widget">
+                    <h4 class="sidebar-title">热门路线</h4>
+                    <ul class="route-list">
+                        <li>
+                            <h4>入口 -> 溪谷栈道 -> 主峰</h4>
+                            <p>难度：⭐⭐⭐</p>
+                        </li>
+                        <li>
+                            <h4>入口 -> 观景台 -> 返回</h4>
+                            <p>难度：⭐⭐</p>
+                        </li>
+                        <li>
+                            <h4>主峰 -> 露营地 -> 出口</h4>
+                            <p>难度：⭐⭐⭐⭐</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h4 class="sidebar-title">实用信息</h4>
+                    <ul class="route-list">
+                        <li>
+                            <h4>最佳季节</h4>
+                            <p>春季（3-5月）赏花，秋季（9-11月）观叶。</p>
+                        </li>
+                        <li>
+                            <h4>建议装备</h4>
+                            <p>舒适运动鞋、登山杖、防晒霜、充足饮用水。</p>
+                        </li>
+                        <li>
+                            <h4>餐饮服务</h4>
+                            <p>山顶设有简易餐饮点，建议自备干粮。</p>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <section id="tips" class="section">
+            <div class="section-title">
+                <h2>出行贴士</h2>
+                <p>为了您的旅途更加愉快，请注意以下事项</p>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <h4>安全第一</h4>
+                    <p>请勿在未开发区域探险，注意脚下湿滑，遵守景区安全警示标识。切勿翻越护栏。</p>
+                </div>
+                <div class="tip-item">
+                    <h4>环境保护</h4>
+                    <p>请将垃圾随身带走或投入指定垃圾桶，保护高百丈的生态环境，做到“除了脚印什么都不留下”。</p>
+                </div>
+                <div class="tip-item">
+                    <h4>天气关注</h4>
+                    <p>出发前请查看天气预报，雨后山路易湿滑，大风天气请避免在悬崖边停留。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="map-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>景区地图</h2>
+                <p>快速导航至您感兴趣的景点</p>
+            </div>
+            <div class="map-placeholder">
+                <img src="https://picsum.photos/seed/map/1200/400.jpg" alt="花都高百丈风景区地图示意">
+                <div style="position: absolute; background: white; padding: 10px 20px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+                    <strong>🗺️ 地图加载中...</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>花都高百丈风景区</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">
+                        专注于为游客提供最优质的生态旅游体验。在这里，您可以远离喧嚣，回归自然，感受山野的宁静与壮美。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">新闻动态</a></li>
+                        <li><a href="#">游客服务</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>地址：广州市花都区炭步镇高百丈风景区</li>
+                        <li>电话：020-12345678</li>
+                        <li>邮箱：info@gaobaizhang.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 花都高百丈风景区 版权所有. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
